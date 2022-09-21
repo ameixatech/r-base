@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openjdk-17-jdk \
     && rm -rf /var/lib/apt/lists/*
 
+RUN R CMD javareconf
 RUN R -e "options(warn = 2); install.packages('pdftools')"
 RUN R -e "options(warn = 2); install.packages('rJava')"
 RUN R -e "options(warn = 2); install.packages('RCurl')"
