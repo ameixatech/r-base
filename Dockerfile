@@ -12,11 +12,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN R CMD javareconf
+RUN R -e "options(warn = 2); install.packages('remotes')"
+RUN R -e 'options(warn = 2); remotes::install_github(c("ropensci/tabulizerjars", "ropensci/tabulizer"), INSTALL_opts = "--no-multiarch")'
 RUN R -e "options(warn = 2); install.packages('pdftools')"
 RUN R -e "options(warn = 2); install.packages('rJava')"
 RUN R -e "options(warn = 2); install.packages('RCurl')"
 RUN R -e "options(warn = 2); install.packages('tidyverse')"
-RUN R -e "options(warn = 2); install.packages('remotes')"
 RUN R -e "options(warn = 2); install.packages('DBI')"
 RUN R -e "options(warn = 2); install.packages('data.table')"
 RUN R -e "options(warn = 2); install.packages('elastic')"
@@ -28,7 +29,6 @@ RUN R -e "options(warn = 2); install.packages('janitor')"
 RUN R -e "options(warn = 2); install.packages('jsonlite')"
 RUN R -e "options(warn = 2); install.packages('lubridate')"
 RUN R -e "options(warn = 2); install.packages('rvest')"
-RUN R -e "options(warn = 2); install.packages('tabulizer')"
 RUN R -e "options(warn = 2); install.packages('textrecipes')"
 RUN R -e "options(warn = 2); install.packages('tictoc')"
 RUN R -e "options(warn = 2); install.packages('tidymodels')"
